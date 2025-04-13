@@ -1,4 +1,5 @@
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using static System.Math;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -46,6 +47,37 @@ namespace Laba3CSharp
         float A1; //
         float A2; //
 
+        Bitmap layer11;
+        Bitmap layer12;
+        Bitmap l1;
+        Graphics g1;
+
+        Bitmap layer21;
+        Bitmap layer22;
+        Bitmap l2;
+        Graphics g2;
+
+        Bitmap layer31;
+        Bitmap layer32;
+        Bitmap l3;
+        Graphics g3;
+
+        Bitmap layer41;
+        Bitmap layer42;
+        Bitmap l4;
+        Graphics g4;
+
+        Bitmap layer51;
+        Bitmap layer52;
+        Bitmap l5;
+        Graphics g5;
+
+        Bitmap layer61;
+        Bitmap layer62;
+        Bitmap l6;
+        Graphics g6;
+
+        float Vp1 = -100, Xp1 = -100, Vp2 = -100, Xp2 = -100, Epotp = -100, Ekinp = -100;
         public Form1()
         {
             InitializeComponent();
@@ -54,6 +86,8 @@ namespace Laba3CSharp
         private void CommandInit_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+            NewParam();
+            InitAxis(); 
             NewParam(); 
             //InitAxis(); 
             //Axis1.StatToDin()
@@ -62,11 +96,49 @@ namespace Laba3CSharp
             //Axis1.DinToPic()
             //CommandStart.Enabled = True
 
+            Graphics gr1 = Graphics.FromImage(layer12);
+            gr1.Clear(Color.Transparent);
+            Graphics gr2 = Graphics.FromImage(layer22);
+            gr2.Clear(Color.Transparent);
+            Graphics gr3 = Graphics.FromImage(layer32);
+            gr3.Clear(Color.Transparent);
+            Graphics gr4 = Graphics.FromImage(layer42);
+            gr4.Clear(Color.Transparent);
+            Graphics gr5 = Graphics.FromImage(layer52);
+            gr5.Clear(Color.Transparent);
+            Graphics gr6 = Graphics.FromImage(layer62);
+            gr6.Clear(Color.Transparent);
+
+            //CommandStart.Enabled = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             NewParam();
+
+            layer11 = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            layer12 = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            l1 = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+
+            layer21 = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+            layer22 = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+            l2 = new Bitmap(pictureBox2.Width, pictureBox2.Height);
+
+            layer31 = new Bitmap(pictureBox3.Width, pictureBox3.Height);
+            layer32 = new Bitmap(pictureBox3.Width, pictureBox3.Height);
+            l3 = new Bitmap(pictureBox3.Width, pictureBox3.Height);
+
+            //layer41 = new Bitmap(pictureBox4.Width, pictureBox4.Height);
+            //layer42 = new Bitmap(pictureBox4.Width, pictureBox4.Height);
+            //l4 = new Bitmap(pictureBox4.Width, pictureBox4.Height);
+
+            //layer51 = new Bitmap(pictureBox5.Width, pictureBox5.Height);
+            //layer52 = new Bitmap(pictureBox5.Width, pictureBox5.Height);
+            //l5 = new Bitmap(pictureBox5.Width, pictureBox5.Height);
+
+            //layer61 = new Bitmap(pictureBox6.Width, pictureBox6.Height);
+            //layer62 = new Bitmap(pictureBox6.Width, pictureBox6.Height);
+            //l6 = new Bitmap(pictureBox6.Width, pictureBox6.Height);
         }
 
         private void NewParam()
@@ -110,12 +182,26 @@ namespace Laba3CSharp
             xBase = 1;
             yBase = 1;
 
-            Graphics gr;
+            Color gray = Color.DarkGray;
+            Color gr = Color.DimGray;
+            Brush bg = new SolidBrush(gray);
+            Brush b = new SolidBrush(gr);
+            //Graphics gr1 = pictureBox1.CreateGraphics();
             Color black = Color.Black;
             Pen p = new Pen(black, 2);
+            System.Drawing.Font font = new System.Drawing.Font("Ink Free", 14);
 
-            float x = pictureBox1.Width / 2;
-            float y = pictureBox1.Height / 2;
+            Graphics gr1 = Graphics.FromImage(layer11);
+            gr1.FillRectangle(b, 0, 0, pictureBox1.Width, pictureBox1.Height);
+            float x1 = pictureBox1.Width / 2;
+            float y1 = pictureBox1.Height / 2;
+            gr1.DrawLine(p, 0, y1, pictureBox1.Width, y1);
+            gr1.DrawLine(p, x1, 0, x1, pictureBox1.Height);
+            gr1.DrawString($"{xBase}, X", font, Brushes.Black, pictureBox1.Width - 40, y1 - 25);
+            gr1.DrawString($"{yBase}, Y", font, Brushes.Black, x1, -5);
+            pictureBox1.Image = layer11;
+            g1 = Graphics.FromImage(l1);
+            g1.DrawImage(layer11, 0, 0);
             //Axis1.Axis_Type = 1
             //Axis1.Pix_type = 4
             //Axis1.Pix_Size = 0.08 * xBase

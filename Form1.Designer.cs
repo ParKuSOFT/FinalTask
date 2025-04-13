@@ -48,7 +48,11 @@
             TextV01 = new TextBox();
             TextV02 = new TextBox();
             pictureBox1 = new PictureBox();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             SuspendLayout();
             // 
             // CommandInit
@@ -181,11 +185,29 @@
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.Location = new Point(179, 357);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(300, 100);
+            pictureBox2.TabIndex = 18;
+            pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.Location = new Point(179, 463);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(300, 100);
+            pictureBox3.TabIndex = 19;
+            pictureBox3.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(862, 562);
+            Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(TextV02);
             Controls.Add(TextV01);
@@ -208,6 +230,8 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -233,5 +257,7 @@
         private TextBox TextV01;
         private TextBox TextV02;
         private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }
